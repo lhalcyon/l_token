@@ -7,7 +7,9 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  flutter_redux: ^0.5.2
+  font_awesome_flutter: ^7.1.0
+  rxdart: "^0.18.1"
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +26,26 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+
+      # images
+      - assets/images/ic_logo.png
+      - assets/images/ic_default_user_avatar.png
+      - assets/images/ic_default_wallet_avatar_0.png
+      - assets/images/ic_default_wallet_avatar_1.png
+      - assets/images/ic_default_wallet_avatar_2.png
+      - assets/images/ic_default_wallet_avatar_3.png
+      - assets/images/ic_default_wallet_avatar_4.png
+      - assets/images/ic_default_wallet_avatar_5.png
+      - assets/images/ic_default_wallet_avatar_6.png
+      - assets/images/ic_default_wallet_avatar_7.png
+      - assets/images/ic_default_wallet_avatar_8.png
+      - assets/images/ic_default_wallet_avatar_9.png
+      - assets/images/ic_default_wallet_avatar_10.png
+      - assets/images/ic_gas_price_fast.png
+      - assets/images/ic_gas_price_slow.png
+      - assets/images/ic_qrcode_scan.png
+      - assets/images/ic_qrcode.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
