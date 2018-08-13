@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/routes/routes.dart';
-import 'package:l_token/view/list_item_widget.dart';
+import 'package:l_token/view/list/list_item_widget.dart';
+
 
 class ProfilePage extends StatelessWidget {
   static const String routeName = Routes.profile + "/index";
@@ -19,9 +21,9 @@ class ProfilePage extends StatelessWidget {
           bodyAvatarAndNames(context),
           bodyItemsGroup(context),
           new Container(height: 20.0,),
-          new ListItemWidget(iconData: Icons.settings,title: 'Settings',callback: (){
-            print('heheda');
-          },)
+          new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
+            Navigator.of(context).pushNamed(SettingsPage.routeName);
+          },),
         ]));
   }
 
@@ -52,9 +54,10 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget bodyItemsGroup(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return new Container(
       height: 50.0,
-      color: Colors.white,
+      color: theme.accentColor,
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
