@@ -3,6 +3,7 @@ import 'package:l_token/pages/main_page.dart';
 import 'package:l_token/pages/market_page.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/profile_page.dart';
+import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/pages/wallet_page.dart';
 
 class Page {
@@ -38,7 +39,8 @@ List<Page> _buildPages() {
     new Page(routeName: MarketPage.routeName, buildRoute: (BuildContext context) => new MarketPage()),
     new Page(routeName: WalletPage.routeName, buildRoute: (BuildContext context) => new WalletPage()),
     new Page(routeName: ProfilePage.routeName, buildRoute: (BuildContext context) => new ProfilePage()),
-    new Page(routeName: SettingsPage.routeName, buildRoute: (BuildContext context) => new SettingsPage())
+    new Page(routeName: SettingsPage.routeName, buildRoute: (BuildContext context) => new SettingsPage()),
+    new Page(routeName: WalletManagePage.routeName, buildRoute: (BuildContext context) => new WalletManagePage()),
   ];
   return pages;
 }

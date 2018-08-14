@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:l_token/model/assets.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
+import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/wallet_item_widget.dart';
 import 'package:l_token/view/wallet_widget.dart';
@@ -29,7 +30,7 @@ class WalletPage extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      appBar: _appbar(context),
+      appBar: _appBar(context),
       body: new RefreshIndicator(
 //          color: theme.accentColor,
           key: _refreshIndicatorKey,
@@ -55,7 +56,7 @@ class WalletPage extends StatelessWidget {
     });
   }
 
-  Widget _appbar(BuildContext context) {
+  Widget _appBar(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final double iconSize = 28.0;
     final double coinTypeSize = 12.0;
@@ -109,7 +110,7 @@ class WalletPage extends StatelessWidget {
         child: coinTypeWidget,
         borderRadius: const BorderRadius.all(const Radius.circular(12.0)),
         onTap: () {
-          print('to wallet manage');
+          Navigator.of(context).pushNamed(WalletManagePage.routeName);
         },
       ),
     );
