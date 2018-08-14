@@ -81,12 +81,10 @@ class ListItemWidget extends StatelessWidget {
           new Container(
             height: Dimens.itemHeight,
             alignment: Alignment.bottomCenter,
-            child: new Padding(
-              padding: EdgeInsets.only(left: Dimens.itemTitleLeading),
-              child: new Divider(
-                color: theme.backgroundColor,
-                height: bottomLineType == BottomLineType.None ? 0.0 : Dimens.line,
-              ),
+            child: new Divider(
+              color: theme.backgroundColor,
+              indent: Dimens.padding,
+              height: bottomLineType == BottomLineType.None ? 0.0 : Dimens.line,
             ),
           )
         ],

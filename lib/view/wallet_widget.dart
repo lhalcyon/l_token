@@ -11,7 +11,7 @@ class WalletWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return new Container(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       decoration: new BoxDecoration(
           borderRadius: const BorderRadius.all(const Radius.circular(8.0)),
           color: theme.highlightColor),

@@ -5,6 +5,7 @@ import 'package:l_token/model/assets.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/style/styles.dart';
+import 'package:l_token/view/wallet_item_widget.dart';
 import 'package:l_token/view/wallet_widget.dart';
 
 class WalletPage extends StatelessWidget {
@@ -16,7 +17,11 @@ class WalletPage extends StatelessWidget {
   static final GlobalKey<ScaffoldState> _scaffoldKey =
       new GlobalKey<ScaffoldState>();
 
-  final List<Assets> _assets = [];
+  final List<Assets> _assets = [
+    Assets(),
+    Assets(),
+    Assets(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class WalletPage extends StatelessWidget {
       body: new RefreshIndicator(
 //          color: theme.accentColor,
           key: _refreshIndicatorKey,
-          child: ListView(children: _body()),
+          child: ListView(children: _body(context)),
           onRefresh: _handleRefresh),
     );
   }
@@ -110,22 +115,43 @@ class WalletPage extends StatelessWidget {
     );
   }
 
-  List<Widget> _body(){
+  List<Widget> _body(BuildContext context) {
     List<Widget> list = List();
     HDWallet wallet = new HDWallet();
     wallet.address = "0xafb87869fd4132e8700e8678765cecd6b259cda8";
     wallet.name = "HDWallet";
     Widget currentWalletWidget = new WalletWidget(wallet);
-    Widget assetsMarkWidget = Container();
+    Widget assetsMarkWidget = _bodyLabel(context);
 
     list.add(currentWalletWidget);
     list.add(assetsMarkWidget);
-//    List<Widget> assetsList = _assets.map<Widget>((Assets assets){
-//
-//      return Container();
-//    });
-//    list.addAll(assetsList);
+    List<Widget> assetsWidgetList = _assets.map<Widget>((assets){
+      return new WalletItemWidget(assets);
+    }).toList();
+    list.addAll(assetsWidgetList);
     return list;
   }
 
+  Widget _bodyLabel(BuildContext context) {
+    return new Padding(
+        padding: EdgeInsets.only(left: 10.0, top: 4.0, bottom: 4.0),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            new Text('Assets',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
+            new InkWell(
+              borderRadius: BorderRadius.circular(44.0),
+              child: new Ink(
+                width: 44.0,
+                height: 44.0,
+                child: new Icon(Icons.add_circle_outline),
+              ),
+              onTap: () {
+                print('add');
+              },
+            )
+          ],
+        ));
+  }
 }

@@ -46,6 +46,20 @@ flutter:
       - assets/images/ic_gas_price_slow.png
       - assets/images/ic_qrcode_scan.png
       - assets/images/ic_qrcode.png
+      - assets/images/ic_transfer_arp_b.png
+      - assets/images/ic_transfer_bat_b.png
+      - assets/images/ic_transfer_bnt_b.png
+      - assets/images/ic_transfer_eos_b.png
+      - assets/images/ic_transfer_eth_b.png
+      - assets/images/ic_transfer_every_b.png
+      - assets/images/ic_transfer_iost_b.png
+      - assets/images/ic_transfer_knc_b.png
+      - assets/images/ic_transfer_lrc_b.png
+      - assets/images/ic_transfer_rdn_b.png
+      - assets/images/ic_transfer_req_b.png
+      - assets/images/ic_transfer_rhoc_b.png
+      - assets/images/ic_transfer_vite_b.png
+      - assets/images/ic_transfer_weth_b.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
