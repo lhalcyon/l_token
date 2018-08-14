@@ -24,23 +24,13 @@ class SettingsPage extends StatelessWidget {
                   valueChanged: (isChecked){
                     store.dispatch(Action.ChangeTheme);
                   },
+                  onTapCallback: (){
+                    store.dispatch(Action.ChangeTheme);
+                  },
                 ),
               ),
             ));
       }
     );
-//    return Scaffold(
-//        appBar: AppBar(
-//          title: new Text('Settings'),
-//        ),
-//        body: new Container(
-//          color: theme.primaryColor,
-//          child: new Center(
-//            child: new SwitchListItemWidget(
-//              title: 'Theme Mode',
-//              isChecked: true,
-//            ),
-//          ),
-//        ));
   }
 }

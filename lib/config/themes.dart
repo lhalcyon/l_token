@@ -25,7 +25,7 @@ ThemeData _buildDarkTheme() {
     canvasColor: const Color(0xFF202124),
     scaffoldBackgroundColor: const Color(0xFF202124),
     backgroundColor: const Color(0xFF202124),
-    errorColor: const Color(0xFFB00020),
+    errorColor: const Color(0xFFD81B60),
     buttonTheme: const ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
     ),
@@ -43,19 +43,37 @@ ThemeData _buildLightTheme() {
 
   final ThemeData base = new ThemeData.light();
   return base.copyWith(
+    // 状态栏白字
     brightness: Brightness.light,
+    // 原色
     primaryColor: primaryColor,
+    // 指示器
     indicatorColor: Colors.white30,
-//    splashColor: Colors.blue,
-//    splashFactory: InkRipple.splashFactory,
+    // 水波纹
+    splashColor: Color(0xFFE0E0E0),
+    splashFactory: InkRipple.splashFactory,
+    // 强调
     accentColor: accentColor,
+    // 画布
     canvasColor: Colors.white,
+    // 脚手架背景
     scaffoldBackgroundColor: backgroundColor,
+    // 背景
     backgroundColor: backgroundColor,
-    errorColor: accentColor,
+    // 错误
+    errorColor: const Color(0xFFD81B60),
 //    iconTheme: const IconThemeData(
 //      color: const Color(0xFF13B9FD)
 //    ),
+//    highlightColor: const Color(0xFF0265B9),
+    // 分隔
+    dividerColor: backgroundColor,
+    // 按钮
+    buttonColor: accentColor,
+    // 提示
+    hintColor: const Color(0xFFC3C7C9),
+    // 禁用
+    disabledColor: const Color(0xFFC3C8CC),
     buttonTheme: const ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
     ),

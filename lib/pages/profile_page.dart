@@ -24,6 +24,15 @@ class ProfilePage extends StatelessWidget {
           new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
             Navigator.of(context).pushNamed(SettingsPage.routeName);
           },),
+          new InkResponse(
+            radius: 50.0,
+            child: Container(height:50.0,color: Colors.white,child: new Text('heheda'),),onTap: (){
+            print('click');
+          },),
+          Divider(height: 20.0,),
+          new Ink(height: 50.0,color: Colors.white,child: new InkWell(child: new Text('heheda'),onTap: (){
+            print('heheda');
+          },))
         ]));
   }
 

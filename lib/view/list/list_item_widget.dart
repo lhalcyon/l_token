@@ -18,7 +18,7 @@ class ListItemWidget extends StatelessWidget {
 
   final VoidCallback onTapCallback;
 
-  final BottomLineType lineType;
+  final BottomLineType bottomLineType;
 
   final bool withArrow;
 
@@ -27,17 +27,18 @@ class ListItemWidget extends StatelessWidget {
       this.title,
       this.subTitle,
       this.onTapCallback,
-      this.lineType = BottomLineType.None,
+      this.bottomLineType = BottomLineType.None,
       this.withArrow = true});
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+
     return new InkWell(
       onTap: onTapCallback,
       child: Stack(
         children: <Widget>[
-          new Container(
+          new Ink(
             height: Dimens.itemHeight,
             color: Colors.white,
             child: new Row(
@@ -82,9 +83,9 @@ class ListItemWidget extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: new Padding(
               padding: EdgeInsets.only(left: Dimens.itemTitleLeading),
-              child: new Container(
+              child: new Divider(
                 color: theme.backgroundColor,
-                height: lineType == BottomLineType.None ? 0.0 : Dimens.line,
+                height: bottomLineType == BottomLineType.None ? 0.0 : Dimens.line,
               ),
             ),
           )
