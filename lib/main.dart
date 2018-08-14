@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:l_token/config/states.dart';
-import 'package:l_token/config/themes.dart';
+import 'package:l_token/style/themes.dart';
 import 'package:l_token/pages/main_page.dart';
 import 'package:l_token/pages/routes/page.dart';
 import 'package:redux/redux.dart';

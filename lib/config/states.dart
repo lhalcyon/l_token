@@ -1,4 +1,4 @@
-import 'package:l_token/config/themes.dart';
+import 'package:l_token/style/themes.dart';
 import 'package:l_token/redux/theme_redux.dart';
 
 class AppState {

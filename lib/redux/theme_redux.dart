@@ -1,5 +1,5 @@
 import 'package:l_token/config/actions.dart';
-import 'package:l_token/config/themes.dart';
+import 'package:l_token/style/themes.dart';
 import 'package:redux/redux.dart';
 
 final rThemeDataReducer = combineReducers<LTheme>([

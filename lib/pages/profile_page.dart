@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
           bodyItemsGroup(context),
           new Container(height: 20.0,),
           new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
-            Navigator.of(context).pushNamed(SettingsPage.routeName);
+//            Navigator.of(context).pushNamed(SettingsPage.routeName);
           },),
           new InkResponse(
             radius: 50.0,
@@ -32,7 +32,10 @@ class ProfilePage extends StatelessWidget {
           Divider(height: 20.0,),
           new Ink(height: 50.0,color: Colors.white,child: new InkWell(child: new Text('heheda'),onTap: (){
             print('heheda');
-          },))
+          },)),
+          new ListTile(title: new Text('heheda'),onTap: (){
+
+          },)
         ]));
   }
 
@@ -66,7 +69,6 @@ class ProfilePage extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return new Container(
       height: 50.0,
-      color: theme.accentColor,
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[

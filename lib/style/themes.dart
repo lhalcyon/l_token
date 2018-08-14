@@ -50,8 +50,8 @@ ThemeData _buildLightTheme() {
     // 指示器
     indicatorColor: Colors.white30,
     // 水波纹
-    splashColor: Color(0xFFE0E0E0),
-    splashFactory: InkRipple.splashFactory,
+    splashColor: Color(0xFFE0E0E0).withOpacity(0.8),
+//    splashFactory: InkRipple.splashFactory,
     // 强调
     accentColor: accentColor,
     // 画布
@@ -65,7 +65,7 @@ ThemeData _buildLightTheme() {
 //    iconTheme: const IconThemeData(
 //      color: const Color(0xFF13B9FD)
 //    ),
-//    highlightColor: const Color(0xFF0265B9),
+    highlightColor: const Color(0xFF0265B9),
     // 分隔
     dividerColor: backgroundColor,
     // 按钮
