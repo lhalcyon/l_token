@@ -8,8 +8,9 @@ class WalletItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final verticalPadding = 16.0;
     final ThemeData theme = Theme.of(context);
-    final double avatarSize = 42.0;
+    final double avatarSize = 36.0;
     return new Dismissible(
       key: new ObjectKey(_wallet),
       direction: DismissDirection.horizontal,
@@ -33,7 +34,7 @@ class WalletItemWidget extends StatelessWidget {
                 children: <Widget>[
                   new Padding(
                     padding: EdgeInsets.only(
-                        top: 12.0, bottom: 12.0, left: 16.0, right: 10.0),
+                        top: verticalPadding, bottom: verticalPadding, left: 16.0, right: 10.0),
                     child: new Container(
                       height: avatarSize,
                       width: avatarSize,
@@ -46,7 +47,7 @@ class WalletItemWidget extends StatelessWidget {
                   ),
                   new Expanded(
                       child: new Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        padding: EdgeInsets.symmetric(vertical: verticalPadding),
                         child: new Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,12 +130,16 @@ class _BookFolderMark extends StatelessWidget {
           child: new SizedBox(
             width: markerSize,
             height: markerSize,
-            child: new Container(
-              decoration: new BoxDecoration(
-                borderRadius: BorderRadius.only(topRight: new Radius.circular(0.0),bottomRight: new Radius.circular(8.0)),
-                color: Color(0xFFDDD6DF),
+            child: new Material(
+              elevation: 1.0,
+              type: MaterialType.transparency,
+              child: new Container(
+                decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.only(topRight: new Radius.circular(0.0),bottomRight: new Radius.circular(8.0)),
+                  color: Color(0xFFDDD6DF),
+                ),
               ),
-            ),
+            )
           ),
         ),
 //        new Container(color: Colors.yellow,)
