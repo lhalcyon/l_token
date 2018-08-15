@@ -110,33 +110,34 @@ class _BookFolderMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double markerSize = 14.0;
     return isChecked
         ? new Stack(
       children: <Widget>[
         new Container(color: Colors.transparent, child: new ClipPath(
-          clipper: new _TriangleCliper(radius: 16.0, isLeftPart: true),
+          clipper: new _TriangleCliper(radius: markerSize, isLeftPart: true),
           child: new SizedBox(
-            width: 16.0,
-            height: 16.0,
+            width: markerSize,
+            height: markerSize,
             child: new Container(
               color: backGroundColor,
             ),
           ),
         ), ),
         new ClipPath(
-          clipper: new _TriangleCliper(radius: 16.0, isLeftPart: false),
+          clipper: new _TriangleCliper(radius: markerSize, isLeftPart: false),
           child: new SizedBox(
-            width: 16.0,
-            height: 16.0,
+            width: markerSize,
+            height: markerSize,
             child: new Container(
               decoration: new BoxDecoration(
-                borderRadius: BorderRadius.only(topRight: new Radius.circular(2.0),bottomRight: new Radius.circular(6.0)),
+                borderRadius: BorderRadius.only(topRight: new Radius.circular(0.0),bottomRight: new Radius.circular(8.0)),
                 color: Color(0xFFDDD6DF),
               ),
             ),
           ),
         ),
-
+//        new Container(color: Colors.yellow,)
       ],
     )
         : Container();
