@@ -6,7 +6,7 @@ import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/style/styles.dart';
-import 'package:l_token/view/wallet_item_widget.dart';
+import 'package:l_token/view/token_item_widget.dart';
 import 'package:l_token/view/wallet_widget.dart';
 
 class WalletPage extends StatelessWidget {
@@ -127,7 +127,7 @@ class WalletPage extends StatelessWidget {
     list.add(currentWalletWidget);
     list.add(assetsMarkWidget);
     List<Widget> assetsWidgetList = _assets.map<Widget>((assets){
-      return new WalletItemWidget(assets);
+      return new TokenItemWidget(assets);
     }).toList();
     list.addAll(assetsWidgetList);
     return list;
