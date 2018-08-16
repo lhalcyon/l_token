@@ -46,7 +46,7 @@ class TokenItemWidget extends StatelessWidget {
             ),
             new Container(
               child: Divider(
-                  height: Dimens.line, color: Color(0xFFCCCCCC), indent: 16.0),
+                  height: Dimens.line, indent: 16.0),
               alignment: Alignment.bottomCenter,
             )
           ],

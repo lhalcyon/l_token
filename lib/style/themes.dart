@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 final LTheme kDarkTheme = new LTheme(mode: ThemeMode.Dark,themeData: _buildDarkTheme());
 final LTheme kLightTheme = new LTheme(mode: ThemeMode.Light,themeData: _buildLightTheme());
 
-TextTheme _buildTextTheme(TextTheme base) {
+TextTheme _buildTextTheme(TextTheme base,bool isDark) {
   return base.copyWith(
     title: base.title.copyWith(
       fontFamily: 'GoogleSans',
+      fontSize: 16.0,
+      color: Color(0xFF42495A)
     ),
   );
 }
@@ -29,9 +31,9 @@ ThemeData _buildDarkTheme() {
     buttonTheme: const ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
     ),
-    textTheme: _buildTextTheme(base.textTheme),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme),
+    textTheme: _buildTextTheme(base.textTheme,true),
+    primaryTextTheme: _buildTextTheme(base.primaryTextTheme,true),
+    accentTextTheme: _buildTextTheme(base.accentTextTheme,true),
 
   );
 }
@@ -48,7 +50,7 @@ ThemeData _buildLightTheme() {
     // 原色
     primaryColor: primaryColor,
     // 指示器
-    indicatorColor: Colors.white30,
+    indicatorColor: accentColor,
     // 水波纹
     splashColor: Color(0xFFE0E0E0).withOpacity(0.8),
 //    splashFactory: InkRipple.splashFactory,
@@ -67,19 +69,22 @@ ThemeData _buildLightTheme() {
 //    ),
     highlightColor: const Color(0xFF0265B9),
     // 分隔
-    dividerColor: backgroundColor,
+    dividerColor: const Color(0xFFE0E0E0),
     // 按钮
     buttonColor: accentColor,
     // 提示
     hintColor: const Color(0xFFC3C7C9),
     // 禁用
     disabledColor: const Color(0xFFC3C8CC),
+    iconTheme: const IconThemeData(
+      color: primaryColor
+    ),
     buttonTheme: const ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
     ),
-    textTheme: _buildTextTheme(base.textTheme),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme),
+    textTheme: _buildTextTheme(base.textTheme,false),
+    primaryTextTheme: _buildTextTheme(base.primaryTextTheme,false),
+    accentTextTheme: _buildTextTheme(base.accentTextTheme,false),
   );
 }
 

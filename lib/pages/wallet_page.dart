@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:l_token/model/assets.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
+import 'package:l_token/pages/wallet/receive_page.dart';
 import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/token_item_widget.dart';
@@ -95,7 +96,9 @@ class WalletPage extends StatelessWidget {
           icon: Image.asset('assets/images/ic_qrcode.png',
               width: iconSize, height: iconSize),
           onPressed: () {
-            print('onpressed');
+            Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+              return ReceivePage.name('0xafb87869fd4132e8700e8678765cecd6b259cda8', 'assets/images/ic_default_wallet_avatar_4.png');
+            }));
           }),
       actions: <Widget>[
         new IconButton(
@@ -110,7 +113,19 @@ class WalletPage extends StatelessWidget {
         child: coinTypeWidget,
         borderRadius: const BorderRadius.all(const Radius.circular(12.0)),
         onTap: () {
-          Navigator.of(context).pushNamed(WalletManagePage.routeName);
+          Navigator.of(context).push(new PageRouteBuilder(pageBuilder:
+              (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
+            return new WalletManagePage();
+          }, transitionsBuilder: (
+              BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child,
+              ) {
+            // 添加一个平移动画
+            return Routes.bottom2TopTransition(animation, child);
+          }));
         },
       ),
     );
