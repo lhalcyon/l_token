@@ -11,5 +11,7 @@ class Dimens {
 
   static const itemTitleLeading = itemIconSize + padding * 2;
 
+  static const divider = 20.0;
+
 
 }
