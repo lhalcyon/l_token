@@ -82,6 +82,7 @@ ThemeData _buildLightTheme() {
     buttonTheme: const ButtonThemeData(
       textTheme: ButtonTextTheme.primary,
     ),
+    selectedRowColor: Colors.transparent,
     textTheme: _buildTextTheme(base.textTheme,false),
     primaryTextTheme: _buildTextTheme(base.primaryTextTheme,false),
     accentTextTheme: _buildTextTheme(base.accentTextTheme,false),

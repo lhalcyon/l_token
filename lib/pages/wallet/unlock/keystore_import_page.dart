@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:l_token/style/styles.dart';
+import 'package:l_token/view/edu_tips_widget.dart';
+import 'package:l_token/view/password_inputfield.dart';
 
 class KeystoreImportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
     return new Column(
-//      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize:  MainAxisSize.max,
       children: <Widget>[
         _bodyTips(context),
         Divider(
@@ -15,12 +19,12 @@ class KeystoreImportPage extends StatelessWidget {
         _bodyPassword(context),
         new Container(
           height: 45.0,
-          margin: EdgeInsets.symmetric(horizontal: Dimens.padding),
-          child: new RaisedButton(
-            onPressed: () {},
-            child: null,
-          ),
+          margin: EdgeInsets.only(top: Dimens.divider),
+          width: deviceWidth - Dimens.padding * 2,
+          child: new RaisedButton(onPressed: (){},child: new Text('Start Importing'),),
         ),
+        new Expanded(child: new Container()),
+        new EduTipsWidget(title: 'What is Keystore')
       ],
     );
   }
@@ -56,14 +60,21 @@ class KeystoreImportPage extends StatelessWidget {
   }
 
   _bodyPassword(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return new Container(
       margin: EdgeInsets.symmetric(horizontal: Dimens.padding, vertical: 0.0),
-      child: new TextFormField(
-        decoration: new InputDecoration(
-            hintText: 'Wallet Password', border: InputBorder.none),
-        obscureText: true,
+      child: new Theme(
+        data: theme.copyWith(primaryColor: theme.dividerColor),
+        child: new PasswordField(
+          labelText: 'Wallet Password',
+          onFieldSubmitted: (String value) {},
+        ),
       ),
     );
+  }
+
+  _bodySupportTips(BuildContext context) {
+
   }
 
 //new TextField(
