@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/routes/routes.dart';
+import 'package:l_token/pages/wallet/identity_init_page.dart';
 import 'package:l_token/view/list/list_item_widget.dart';
 
 
@@ -31,7 +32,7 @@ class ProfilePage extends StatelessWidget {
           },),
           Divider(height: 20.0,),
           new Ink(height: 50.0,color: Colors.white,child: new InkWell(child: new Text('heheda'),onTap: (){
-            print('heheda');
+            Navigator.of(context).pushNamed(IdentityInitPage.routeName);
           },)),
           new ListTile(title: new Text('heheda'),onTap: (){
 
