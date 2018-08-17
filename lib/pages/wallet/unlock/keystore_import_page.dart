@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:l_token/pages/wallet_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/edu_tips_widget.dart';
 import 'package:l_token/view/password_inputfield.dart';
@@ -21,7 +22,9 @@ class KeystoreImportPage extends StatelessWidget {
           height: 45.0,
           margin: EdgeInsets.only(top: Dimens.divider),
           width: deviceWidth - Dimens.padding * 2,
-          child: new RaisedButton(onPressed: (){},child: new Text('Start Importing'),),
+          child: new RaisedButton(onPressed: (){
+            Navigator.of(context).popUntil(ModalRoute.withName('/'));
+          },child: new Text('Start Importing'),),
         ),
         new Expanded(child: new Container()),
         new EduTipsWidget(title: 'What is Keystore')
