@@ -7,10 +7,8 @@ import 'package:l_token/view/password_inputfield.dart';
 class KeystoreImportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double deviceWidth = MediaQuery.of(context).size.width;
-    return new Column(
+    return new SafeArea(child: new Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize:  MainAxisSize.max,
       children: <Widget>[
         _bodyTips(context),
         Divider(
@@ -20,8 +18,8 @@ class KeystoreImportPage extends StatelessWidget {
         _bodyPassword(context),
         new Container(
           height: 45.0,
-          margin: EdgeInsets.only(top: Dimens.divider),
-          width: deviceWidth - Dimens.padding * 2,
+          margin: EdgeInsets.only(top: Dimens.divider,left: Dimens.padding,right: Dimens.padding),
+          width:  double.infinity,
           child: new RaisedButton(onPressed: (){
             Navigator.of(context).popUntil(ModalRoute.withName('/'));
           },child: new Text('Start Importing'),),
@@ -29,7 +27,7 @@ class KeystoreImportPage extends StatelessWidget {
         new Expanded(child: new Container()),
         new EduTipsWidget(title: 'What is Keystore')
       ],
-    );
+    ));
   }
 
   _bodyTips(BuildContext context) {
@@ -76,12 +74,4 @@ class KeystoreImportPage extends StatelessWidget {
     );
   }
 
-  _bodySupportTips(BuildContext context) {
-
-  }
-
-//new TextField(
-//  decoration: new InputDecoration(hintText: 'Keystore content',border: InputBorder.none),
-
-//  ),
 }
