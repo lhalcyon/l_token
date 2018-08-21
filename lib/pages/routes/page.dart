@@ -4,7 +4,7 @@ import 'package:l_token/pages/main_page.dart';
 import 'package:l_token/pages/market_page.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/profile_page.dart';
-import 'package:l_token/pages/wallet/identity_init_page.dart';
+import 'package:l_token/pages/wallet/init/identity_init_page.dart';
 import 'package:l_token/pages/wallet/wallet_import_page.dart';
 import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/pages/wallet_page.dart';

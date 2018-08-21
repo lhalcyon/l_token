@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/routes/routes.dart';
-import 'package:l_token/pages/wallet/identity_init_page.dart';
+import 'package:l_token/pages/wallet/init/identity_init_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/list/list_item_widget.dart';
 
