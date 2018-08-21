@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/pages/wallet/identity_init_page.dart';
+import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/list/list_item_widget.dart';
 
 
@@ -10,66 +11,18 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    var top = MediaQuery.of(context).padding.top;
-    print(top);
     return new Scaffold(
-        appBar: new AppBar(
-          backgroundColor: theme.primaryColor,
-          elevation: 0.0,
-        ),
-        body: new ListView(children: <Widget>[
-          bodyAvatarAndNames(context),
-          bodyItemsGroup(context),
-          new Container(height: 20.0,),
-          new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
-//            Navigator.of(context).pushNamed(SettingsPage.routeName);
-          },),
-          new InkResponse(
-            radius: 50.0,
-            child: Container(height:50.0,color: Colors.white,child: new Text('heheda'),),onTap: (){
-            print('click');
-          },),
-          Divider(height: 20.0,),
-          new Ink(height: 50.0,color: Colors.white,child: new InkWell(child: new Text('heheda'),onTap: (){
-            Navigator.of(context).pushNamed(IdentityInitPage.routeName);
-          },)),
-          new ListTile(title: new Text('heheda'),onTap: (){
-
-          },)
-        ]));
-  }
-
-  Widget bodyAvatarAndNames(BuildContext context) {
-    double top = MediaQuery.of(context).padding.top;
-    final ThemeData theme = Theme.of(context);
-    return new Container(
-      height: 180.0 - top,
-      color: theme.primaryColor,
-      child: new Column(
-//        mainAxisAlignment: MainAxisAlignment,
-        children: <Widget>[
-          new Image.asset(
-            'assets/images/ic_default_user_avatar.png',
-            width: 48.0,
-            height: 48.0,
-          ),
-          new Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: new Text(
-              'identify_name',
-              style: TextStyle(color: Colors.white),
-            ),
-          )
-        ],
-      ),
+      appBar: _appBar(context),
+      body: _body(context),
     );
   }
 
-  Widget bodyItemsGroup(BuildContext context) {
+
+  Widget _bodyItemsGroup(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return new Container(
-      height: 50.0,
+      height: Dimens.itemHeight,
+      color: Colors.white,
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -89,6 +42,61 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
+  _appBar(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return new AppBar(
+      brightness: Brightness.dark,
+      backgroundColor: theme.primaryColor,
+      elevation: 0.0,
+    );
+  }
+
+  _body(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        _bodyAvatarAndNames(context),
+        _bodyItemsGroup(context),
+        Divider(height: Dimens.line,),
+        Divider(color: Colors.transparent,height: Dimens.divider,),
+        Divider(height: Dimens.line,),
+        new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
+          Navigator.of(context).pushNamed(SettingsPage.routeName);
+        },bottomLineType: BottomLineType.Gap,),
+        new ListItemWidget(iconData: Icons.collections_bookmark,title: 'Support Center',onTapCallback: (){},bottomLineType: BottomLineType.Gap,),
+        new ListItemWidget(iconData: Icons.home,title: 'About Us',onTapCallback: (){},bottomLineType: BottomLineType.None,),
+      ],
+    );
+  }
+
+  Widget _bodyAvatarAndNames(BuildContext context) {
+    double top = MediaQuery.of(context).padding.top;
+    final ThemeData theme = Theme.of(context);
+    return new Container(
+      height: 180.0 - top,
+      alignment: Alignment.center,
+      width: double.infinity,
+      color: theme.primaryColor,
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          new Image.asset(
+            'assets/images/ic_default_user_avatar.png',
+            width: 48.0,
+            height: 48.0,
+          ),
+          new Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: new Text(
+              'identify_name',
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
 
 
 }

@@ -33,7 +33,7 @@ class ListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-
+    const bottomLinePadding = Dimens.padding * 2 + Dimens.itemIconSize;
     return new InkWell(
       onTap: onTapCallback,
       child: Stack(
@@ -82,8 +82,8 @@ class ListItemWidget extends StatelessWidget {
             height: Dimens.itemHeight,
             alignment: Alignment.bottomCenter,
             child: new Divider(
-              color: theme.backgroundColor,
-              indent: Dimens.padding,
+              color: theme.dividerColor,
+              indent: bottomLinePadding,
               height: bottomLineType == BottomLineType.None ? 0.0 : Dimens.line,
             ),
           )

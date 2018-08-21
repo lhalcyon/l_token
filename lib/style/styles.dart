@@ -1,7 +1,7 @@
 
 class Dimens {
 
-  static const itemHeight = 50.0;
+  static const itemHeight = 55.0;
 
   static const padding = 16.0;
 
