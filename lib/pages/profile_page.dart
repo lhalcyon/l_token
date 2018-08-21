@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:l_token/pages/profile/about_page.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/pages/wallet/init/identity_init_page.dart';
@@ -63,9 +64,11 @@ class ProfilePage extends StatelessWidget {
         new ListItemWidget(iconData: Icons.settings,title: 'Settings',onTapCallback: (){
           Navigator.of(context).pushNamed(SettingsPage.routeName);
         },bottomLineType: BottomLineType.Gap,),
-        new ListItemWidget(iconData: Icons.collections_bookmark,title: 'Support Center',onTapCallback: (){},bottomLineType: BottomLineType.Gap,),
-        new ListItemWidget(iconData: Icons.home,title: 'About Us',onTapCallback: (){
+        new ListItemWidget(iconData: Icons.collections_bookmark,title: 'Support Center',onTapCallback: (){
           Navigator.of(context).pushNamed(IdentityInitPage.routeName);
+        },bottomLineType: BottomLineType.Gap,),
+        new ListItemWidget(iconData: Icons.home,title: 'About Us',onTapCallback: (){
+          Navigator.of(context).pushNamed(AboutPage.routeName);
         },bottomLineType: BottomLineType.None,),
       ],
     );

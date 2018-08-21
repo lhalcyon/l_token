@@ -10,6 +10,10 @@ class HDWallet {
 
   String icon;
 
+  String mnemonic;
+
+  HDWallet({this.name, this.address, this.keystore, this.icon, this.mnemonic});
+
   @override
   int get hashCode {
     return address.hashCode;
