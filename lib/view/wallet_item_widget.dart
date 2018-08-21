@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:l_token/model/wallet.dart';
 
 class WalletItemWidget extends StatelessWidget {
-  final HDWallet _wallet;
+  final HDWallet wallet;
 
-  WalletItemWidget(this._wallet);
+  final VoidCallback onMoreTap;
+
+  WalletItemWidget({this.wallet,this.onMoreTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class WalletItemWidget extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final double avatarSize = 36.0;
     return new Dismissible(
-      key: new ObjectKey(_wallet),
+      key: new ObjectKey(wallet),
       direction: DismissDirection.horizontal,
       child: new Container(
           margin: EdgeInsets.symmetric(horizontal: 6.0, vertical: 10.0),
@@ -76,7 +78,7 @@ class WalletItemWidget extends StatelessWidget {
                             ),
                           ),
                           onTap: () {
-                            print('more');
+                            onMoreTap();
                           }),
                     ),
                   ),

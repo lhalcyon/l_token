@@ -5,7 +5,9 @@ import 'package:l_token/util/wallet_util.dart';
 class WalletWidget extends StatelessWidget {
   final HDWallet wallet;
 
-  WalletWidget(this.wallet);
+  final VoidCallback onMoreTap;
+
+  WalletWidget({this.wallet,this.onMoreTap});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class WalletWidget extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      print('more');
+                      onMoreTap();
                     }),
               ),
             ],

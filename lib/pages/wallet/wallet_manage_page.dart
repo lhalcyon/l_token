@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:l_token/manager/specific_wallet_manage_page.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -90,7 +91,11 @@ class WalletManagePage extends StatelessWidget {
       color: Colors.transparent,
     ));
     for (int i = 0; i < 2; i++) {
-      list.add(new WalletItemWidget(new HDWallet()));
+      list.add(new WalletItemWidget(wallet: new HDWallet(),onMoreTap: (){
+        Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+          return new SpecificWalletManagePage(wallet: new HDWallet(),);
+        }));
+      },));
     }
     list.add(new Divider(
       height: 10.0,
@@ -102,7 +107,7 @@ class WalletManagePage extends StatelessWidget {
       color: Colors.transparent,
     ));
     for(int i =0;i<2; i++){
-      list.add(new WalletItemWidget(new HDWallet()));
+      list.add(new WalletItemWidget(wallet: new HDWallet()));
     }
     return list;
   }

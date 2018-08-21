@@ -64,7 +64,9 @@ class ProfilePage extends StatelessWidget {
           Navigator.of(context).pushNamed(SettingsPage.routeName);
         },bottomLineType: BottomLineType.Gap,),
         new ListItemWidget(iconData: Icons.collections_bookmark,title: 'Support Center',onTapCallback: (){},bottomLineType: BottomLineType.Gap,),
-        new ListItemWidget(iconData: Icons.home,title: 'About Us',onTapCallback: (){},bottomLineType: BottomLineType.None,),
+        new ListItemWidget(iconData: Icons.home,title: 'About Us',onTapCallback: (){
+          Navigator.of(context).pushNamed(IdentityInitPage.routeName);
+        },bottomLineType: BottomLineType.None,),
       ],
     );
   }

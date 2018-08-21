@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:l_token/manager/specific_wallet_manage_page.dart';
 import 'package:l_token/model/assets.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
@@ -88,6 +89,7 @@ class WalletPage extends StatelessWidget {
       bottom: new PreferredSize(
           child: Divider(
             height: Dimens.line,
+            color: theme.dividerColor,
           ),
           preferredSize: new Size.fromHeight(Dimens.line)),
       elevation: 0.0,
@@ -136,7 +138,11 @@ class WalletPage extends StatelessWidget {
     HDWallet wallet = new HDWallet();
     wallet.address = "0xafb87869fd4132e8700e8678765cecd6b259cda8";
     wallet.name = "HDWallet";
-    Widget currentWalletWidget = new WalletWidget(wallet);
+    Widget currentWalletWidget = new WalletWidget(wallet: wallet,onMoreTap: (){
+      Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+        return new SpecificWalletManagePage(wallet: wallet,);
+      }));
+    },);
     Widget assetsMarkWidget = _bodyLabel(context);
 
     list.add(currentWalletWidget);
