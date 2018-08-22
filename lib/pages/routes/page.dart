@@ -6,6 +6,7 @@ import 'package:l_token/pages/profile/about_page.dart';
 import 'package:l_token/pages/profile/settings_page.dart';
 import 'package:l_token/pages/profile_page.dart';
 import 'package:l_token/pages/wallet/init/identity_init_page.dart';
+import 'package:l_token/pages/wallet/init/wallet_create_page.dart';
 import 'package:l_token/pages/wallet/wallet_import_page.dart';
 import 'package:l_token/pages/wallet/wallet_manage_page.dart';
 import 'package:l_token/pages/wallet_page.dart';
@@ -48,6 +49,7 @@ List<Page> _buildPages() {
     new Page(routeName: WalletImportPage.routeName, buildRoute: (BuildContext context) => new WalletImportPage()),
     new Page(routeName: IdentityInitPage.routeName, buildRoute: (BuildContext context) => new IdentityInitPage()),
     new Page(routeName: AboutPage.routeName, buildRoute: (BuildContext context) => new AboutPage()),
+    new Page(routeName: WalletCreatePage.routeName, buildRoute: (BuildContext context) => new WalletCreatePage()),
 
   ];
   return pages;
