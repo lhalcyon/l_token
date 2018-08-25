@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:l_token/sdk/bip39/byte_utils.dart';
 import 'package:l_token/sdk/bip39/word_list.dart';

@@ -1,15 +1,52 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/password_inputfield.dart';
+import 'package:l_token/view/status_widget.dart';
 
-class WalletCreatePage extends StatelessWidget {
+class WalletCreatePage extends StatefulWidget {
   static const String routeName = Routes.main + '/create';
+
+  @override
+  State createState() {
+    return new _WalletCreateState();
+  }
+
+}
+
+class _CreateFormData {
+
+  String name = '';
+
+  String password = '';
+
+  String rePassword = '';
+
+  bool hasBeenEdited(){
+    return name != '' && password != '' && rePassword != '';
+  }
+
+  @override
+  String toString() {
+    return '_CreateFormData{name: $name, password: $password, rePassword: $rePassword}';
+  }
+
+
+}
+
+class _WalletCreateState extends State<WalletCreatePage> {
+
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  _CreateFormData _formData = _CreateFormData();
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: _scaffoldKey,
       appBar: _appBar(context),
       backgroundColor: Colors.white,
       body: _body(context),
@@ -28,9 +65,10 @@ class WalletCreatePage extends StatelessWidget {
 
   _body(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return new Form(
+    Form form = new Form(
         key: _formKey,
         autovalidate: false,
+        onWillPop: _warnUserActualExit,
         child: new Container(
           width: double.infinity,
           child: new Column(
@@ -56,8 +94,8 @@ class WalletCreatePage extends StatelessWidget {
                   data: theme.copyWith(primaryColor: theme.dividerColor),
                   child: new TextFormField(
                     decoration: new InputDecoration(hintText: 'Identity Name'),
-                    onSaved: (str) {
-                      print(str);
+                    onSaved: (value) {
+                      this._formData.name = value;
                     },
                   ),
                 ),
@@ -68,8 +106,8 @@ class WalletCreatePage extends StatelessWidget {
                   data: theme.copyWith(primaryColor: theme.dividerColor),
                   child: new PasswordField(
                     labelText: 'Password',
-                    onFieldSubmitted: (String value) {
-                      print('password$value');
+                    onSaved: (value){
+                      this._formData.password = value;
                     },
                   ),
                 ),
@@ -80,7 +118,9 @@ class WalletCreatePage extends StatelessWidget {
                   data: theme.copyWith(primaryColor: theme.dividerColor),
                   child: new PasswordField(
                     labelText: 'Repeat Password',
-                    onFieldSubmitted: (String value) {},
+                    onSaved: (value){
+                      this._formData.rePassword = value;
+                    },
                   ),
                 ),
               ),
@@ -88,7 +128,11 @@ class WalletCreatePage extends StatelessWidget {
                 padding: EdgeInsets.only(
                     top: 36.0, left: Dimens.padding, right: Dimens.padding),
                 child: new RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final FormState form = _formKey.currentState;
+                    form.save();
+                    _handleCreateWallet();
+                  },
                   child: new Container(
                     alignment: Alignment.center,
                     height: Dimens.itemHeight,
@@ -103,5 +147,44 @@ class WalletCreatePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
           ),
         ));
+    return StatusWidget(status: Status.Result,widget: form);
+  }
+
+  Future<bool> _warnUserActualExit() async{
+    final FormState form = _formKey.currentState;
+    if (form == null || !_formData.hasBeenEdited()){
+      return true;
+    }
+
+    return await showDialog<bool>(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('This form has errors'),
+            content: const Text('Really leave this form?'),
+            actions: <Widget>[
+              new FlatButton(
+                child: const Text('YES'),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              ),
+              new FlatButton(
+                child: const Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+            ],
+          );
+        }
+    ) ?? false;
+  }
+
+  void _handleCreateWallet() {
+    //todo 校验
+    String password = _formData.password;
+    String name = _formData.name;
+
   }
 }

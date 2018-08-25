@@ -1,7 +1,5 @@
 import 'package:l_token/sdk/bip39/word_list.dart';
 
-final English english = new English();
-
 class English extends WordList {
   @override
   String getSpace() {
