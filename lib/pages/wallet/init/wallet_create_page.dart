@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:l_token/manager/wallet_initialzer.dart';
+import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/password_inputfield.dart';
@@ -186,5 +188,9 @@ class _WalletCreateState extends State<WalletCreatePage> {
     String password = _formData.password;
     String name = _formData.name;
 
+    var walletFuture = WalletInitializer.generateWallet(name:name,password: password);
+    walletFuture.then((value){
+      print('value$value');
+    });
   }
 }

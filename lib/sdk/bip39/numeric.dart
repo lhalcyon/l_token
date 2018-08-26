@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math' as math;
+import 'package:l_token/sdk/web3j/utils/numbers.dart' as numbers;
 
 class Numeric {
 
@@ -30,5 +31,9 @@ class Numeric {
     if (hex.startsWith("0x"))
       return hex.substring(2);
     return hex;
+  }
+
+  static BigInt bytesToInt(List<int> bytes){
+    return numbers.bytesToInt(bytes);
   }
 }
