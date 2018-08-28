@@ -34,7 +34,6 @@ ThemeData _buildDarkTheme() {
     textTheme: _buildTextTheme(base.textTheme,true),
     primaryTextTheme: _buildTextTheme(base.primaryTextTheme,true),
     accentTextTheme: _buildTextTheme(base.accentTextTheme,true),
-
   );
 }
 

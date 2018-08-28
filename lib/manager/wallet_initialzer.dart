@@ -24,7 +24,6 @@ class WalletInitializer {
     Uint8List entropy =
         new DartRandom(Random.secure()).nextBytes(wordByteLength(Words.TWELVE));
     new MnemonicGenerator(English()).createMnemonic(entropy, sb);
-    print(entropy);
     return sb.toString();
   }
 

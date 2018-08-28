@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:l_token/manager/wallet_initialzer.dart';
 import 'package:l_token/model/wallet.dart';
 import 'package:l_token/pages/routes/routes.dart';
+import 'package:l_token/pages/wallet/init/wallet_create_result_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/password_inputfield.dart';
 import 'package:l_token/view/status_widget.dart';
@@ -190,7 +191,10 @@ class _WalletCreateState extends State<WalletCreatePage> {
 
     var walletFuture = WalletInitializer.generateWallet(name:name,password: password);
     walletFuture.then((value){
-      print('value$value');
+      Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+        return WalletCreateResultPage(value);
+      }));
+
     });
   }
 }
