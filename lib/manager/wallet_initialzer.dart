@@ -56,7 +56,7 @@ class WalletInitializer {
     var add = wallet.credentials.address.hex;
 
     print("privateK:$privateK");
-    print("publicK:$publicK");
+    print("publicK:$publicK"); // not correct todo change api
     print("add:$add");
     print("\n---------------\n");
     String keystore = wallet.toJson();

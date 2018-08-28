@@ -27,4 +27,10 @@ class HDWallet {
     return false;
   }
 
+  @override
+  String toString() {
+    return 'HDWallet{name: $name, address: $address, keystore: $keystore, icon: $icon, mnemonic: $mnemonic}';
+  }
+
+
 }
