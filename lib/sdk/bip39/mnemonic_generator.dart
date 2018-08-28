@@ -7,18 +7,14 @@ class MnemonicGenerator {
 
   MnemonicGenerator(this._wordList);
 
-  void createMnemonic(
-    List<int> entropy,
-      final StringBuffer target) {
+  void createMnemonic(List<int> entropy, final StringBuffer target) {
     final List<int> wordIndexes = MnemonicGenerator.wordIndexes(entropy);
     _createMnemonic(wordIndexes, target);
   }
 
-  void _createMnemonic(
-      List<int> wordIndexes,
-      final StringBuffer target){
+  void _createMnemonic(List<int> wordIndexes, final StringBuffer target) {
     final String space = _wordList.getSpace();
-    for(var i=0;i<wordIndexes.length;i++){
+    for (var i = 0; i < wordIndexes.length; i++) {
       if (i > 0) {
         target.write(space);
       }
@@ -27,10 +23,11 @@ class MnemonicGenerator {
   }
 
   static List<int> wordIndexes(List<int> entropy) {
-    final int ent = entropy.length;
+    final int ent = entropy.length * 8;
+    entropyLengthPreChecks(ent);
+
     List<int> result = List();
     result.addAll(entropy);
-    entropyLengthPreChecks(ent);
     result.add(firstByteOfSha256(entropy));
 
     //checksum length
