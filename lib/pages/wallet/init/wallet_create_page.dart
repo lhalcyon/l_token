@@ -8,6 +8,7 @@ import 'package:l_token/pages/wallet/init/wallet_create_result_page.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/password_inputfield.dart';
 import 'package:l_token/view/status_widget.dart';
+import 'package:http/http.dart' as http;
 
 class WalletCreatePage extends StatefulWidget {
   static const String routeName = Routes.main + '/create';
@@ -184,15 +185,21 @@ class _WalletCreateState extends State<WalletCreatePage> {
     ) ?? false;
   }
 
-  _handleCreateWallet() async {
+  getWallet(String name,String password) async{
+    return await WalletInitializer.generateWallet(password: password,name: name);
+  }
+
+  Future _handleCreateWallet() async{
     //todo 校验
+    print("before:${new DateTime.now()}");
     String password = _formData.password;
     String name = _formData.name;
+    var wallet = await getWallet(name, password);
+    print("after:${new DateTime.now()}\n$wallet");
+//    Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+//      return WalletCreateResultPage(wallet);
+//    }));
 
-    var wallet = await WalletInitializer.generateWallet(name:name,password: password);
-    Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
-      return WalletCreateResultPage(wallet);
-    }));
 
   }
 }
