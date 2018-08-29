@@ -47,27 +47,34 @@ class WalletInitializer {
     var privateKeyBytes = childPrivateKey.hdKey.getKey();
     var privateKey = Numeric.bytesToInt(privateKeyBytes);
 
-    var credentials = Credentials.fromPrivateKey(privateKey);
     Random random = new Random.secure();
-    var wallet = Wallet.createNew(credentials, "123456", random);
-    var privateK = Numeric.encodeQuantity(wallet.credentials.privateKey);
-    var publicK = Numeric.encodeQuantity(wallet.credentials.publicKey);
-    var add = wallet.credentials.address.hex;
+    var future = new Future((){
+      return Credentials.fromPrivateKey(privateKey);
+    })
+    .then((credentials){
+      return Wallet.createNew(credentials, "123456", random);
+    })
+    .then((wallet){
+      var privateK = Numeric.encodeQuantity(wallet.credentials.privateKey);
+      var publicK = Numeric.encodeQuantity(wallet.credentials.publicKey);
+      var add = wallet.credentials.address.hex;
 
-    print("privateK:$privateK");
-    print("publicK:$publicK"); // not correct todo change api
-    print("add:$add");
-    print("\n---------------\n");
-    String keystore = wallet.toJson();
-    print(keystore);
+      print("privateK:$privateK");
+      print("publicK:$publicK"); // not correct todo change api
+      print("add:$add");
+      print("\n---------------\n");
+      String keystore = wallet.toJson();
+      print(keystore);
+      String avatar = 'assets/images/ic_default_wallet_avatar_${random.nextInt(
+          10)}';
+      return HDWallet(
+          name: name ?? 'identify_name',
+          address: add,
+          keystore: keystore,
+          icon: avatar,
+          mnemonic: mnemonic);
+    });
 
-    String avatar = 'assets/images/ic_default_wallet_avatar_${random.nextInt(
-        10)}';
-    return HDWallet(
-        name: name ?? 'identify_name',
-        address: add,
-        keystore: keystore,
-        icon: avatar,
-        mnemonic: mnemonic);
+    return future;
   }
 }

@@ -17,9 +17,10 @@ class SettingsPage extends StatelessWidget {
               title: new Text('Settings'),
             ),
             body: new Container(
+              width: double.infinity,
               color: store.state.theme.themeData.primaryColor,
-              child: new Center(
-                child: new SwitchListItemWidget(
+              child: new Column(children: <Widget>[
+                new SwitchListItemWidget(
                   title: 'Theme Mode',
                   isChecked: !store.state.theme.isDark(),
                   valueChanged: (isChecked){
@@ -29,7 +30,10 @@ class SettingsPage extends StatelessWidget {
                     store.dispatch(Action.ChangeTheme);
                   },
                 ),
-              ),
+                new FlatButton(onPressed: (){
+
+                }, child: new Text('operate'))
+              ],)
             ));
       }
     );

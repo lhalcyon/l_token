@@ -17,18 +17,16 @@ class WalletCreatePage extends StatefulWidget {
   State createState() {
     return new _WalletCreateState();
   }
-
 }
 
 class _CreateFormData {
-
   String name = '';
 
   String password = '';
 
   String rePassword = '';
 
-  bool hasBeenEdited(){
+  bool hasBeenEdited() {
     return name != '' && password != '' && rePassword != '';
   }
 
@@ -36,12 +34,9 @@ class _CreateFormData {
   String toString() {
     return '_CreateFormData{name: $name, password: $password, rePassword: $rePassword}';
   }
-
-
 }
 
 class _WalletCreateState extends State<WalletCreatePage> {
-
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -110,7 +105,7 @@ class _WalletCreateState extends State<WalletCreatePage> {
                   data: theme.copyWith(primaryColor: theme.dividerColor),
                   child: new PasswordField(
                     labelText: 'Password',
-                    onSaved: (value){
+                    onSaved: (value) {
                       this._formData.password = value;
                     },
                   ),
@@ -122,7 +117,7 @@ class _WalletCreateState extends State<WalletCreatePage> {
                   data: theme.copyWith(primaryColor: theme.dividerColor),
                   child: new PasswordField(
                     labelText: 'Repeat Password',
-                    onSaved: (value){
+                    onSaved: (value) {
                       this._formData.rePassword = value;
                     },
                   ),
@@ -132,10 +127,10 @@ class _WalletCreateState extends State<WalletCreatePage> {
                 padding: EdgeInsets.only(
                     top: 36.0, left: Dimens.padding, right: Dimens.padding),
                 child: new RaisedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final FormState form = _formKey.currentState;
                     form.save();
-                    _handleCreateWallet();
+                    await _handleCreateWallet();
                   },
                   child: new Container(
                     alignment: Alignment.center,
@@ -151,45 +146,46 @@ class _WalletCreateState extends State<WalletCreatePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
           ),
         ));
-    return StatusWidget(status: Status.Result,widget: form);
+    return StatusWidget(status: Status.Result, widget: form);
   }
 
-  Future<bool> _warnUserActualExit() async{
+  Future<bool> _warnUserActualExit() async {
     final FormState form = _formKey.currentState;
-    if (form == null || !_formData.hasBeenEdited()){
+    if (form == null || !_formData.hasBeenEdited()) {
       return true;
     }
 
     return await showDialog<bool>(
-        context: context,
-        builder: (BuildContext context) {
-          return new AlertDialog(
-            title: const Text('This form has errors'),
-            content: const Text('Really leave this form?'),
-            actions: <Widget>[
-              new FlatButton(
-                child: const Text('YES'),
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                },
-              ),
-              new FlatButton(
-                child: const Text('NO'),
-                onPressed: () {
-                  Navigator.of(context).pop(false);
-                },
-              ),
-            ],
-          );
-        }
-    ) ?? false;
+            context: context,
+            builder: (BuildContext context) {
+              return new AlertDialog(
+                title: const Text('This form has errors'),
+                content: const Text('Really leave this form?'),
+                actions: <Widget>[
+                  new FlatButton(
+                    child: const Text('YES'),
+                    onPressed: () {
+                      Navigator.of(context).pop(true);
+                    },
+                  ),
+                  new FlatButton(
+                    child: const Text('NO'),
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                  ),
+                ],
+              );
+            }) ??
+        false;
   }
 
-  getWallet(String name,String password) async{
-    return await WalletInitializer.generateWallet(password: password,name: name);
+  Future getWallet(String name, String password) async {
+    return await WalletInitializer.generateWallet(
+        password: password, name: name);
   }
 
-  Future _handleCreateWallet() async{
+  Future _handleCreateWallet() async {
     //todo 校验
     print("before:${new DateTime.now()}");
     String password = _formData.password;
@@ -199,7 +195,5 @@ class _WalletCreateState extends State<WalletCreatePage> {
 //    Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
 //      return WalletCreateResultPage(wallet);
 //    }));
-
-
   }
 }
