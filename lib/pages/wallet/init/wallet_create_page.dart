@@ -127,10 +127,10 @@ class _WalletCreateState extends State<WalletCreatePage> {
                 padding: EdgeInsets.only(
                     top: 36.0, left: Dimens.padding, right: Dimens.padding),
                 child: new RaisedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     final FormState form = _formKey.currentState;
                     form.save();
-                    await _handleCreateWallet();
+                    _handleCreateWallet();
                   },
                   child: new Container(
                     alignment: Alignment.center,
@@ -156,42 +156,49 @@ class _WalletCreateState extends State<WalletCreatePage> {
     }
 
     return await showDialog<bool>(
-            context: context,
-            builder: (BuildContext context) {
-              return new AlertDialog(
-                title: const Text('This form has errors'),
-                content: const Text('Really leave this form?'),
-                actions: <Widget>[
-                  new FlatButton(
-                    child: const Text('YES'),
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    },
-                  ),
-                  new FlatButton(
-                    child: const Text('NO'),
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    },
-                  ),
-                ],
-              );
-            }) ??
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('This form has errors'),
+            content: const Text('Really leave this form?'),
+            actions: <Widget>[
+              new FlatButton(
+                child: const Text('YES'),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              ),
+              new FlatButton(
+                child: const Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+            ],
+          );
+        }) ??
         false;
   }
 
-  Future getWallet(String name, String password) async {
-    return await WalletInitializer.generateWallet(
-        password: password, name: name);
-  }
+//  Future getWallet(String name, String password) async {
+//    return await WalletInitializer.generateWallet(
+//        password: password, name: name);
+//  }
 
-  Future _handleCreateWallet() async {
+  _handleCreateWallet() {
     //todo 校验
-    print("before:${new DateTime.now()}");
     String password = _formData.password;
     String name = _formData.name;
-    var wallet = await getWallet(name, password);
-    print("after:${new DateTime.now()}\n$wallet");
+    print("before:${new DateTime.now()}\n");
+    new Future(() {
+      return WalletInitializer.generateWallet(password: password, name: name);
+    }).then((wallet){
+      print("after:${new DateTime.now()}\n");
+    });
+    http.Client
+//    new Future.delayed(Duration(milliseconds: 4000)).then((_) {
+//      print("after:${new DateTime.now()}\n");
+//    });
 //    Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
 //      return WalletCreateResultPage(wallet);
 //    }));
