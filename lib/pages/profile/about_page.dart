@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:l_token/pages/dialogs.dart';
 import 'package:l_token/pages/routes/routes.dart';
 import 'package:l_token/view/status_widget.dart';
 
@@ -32,7 +33,10 @@ class _AboutState extends State<AboutPage> {
                 setState(() {
                   status = Status.values[index];
                 });
-              })
+              }),
+          new IconButton(icon: Icon(Icons.place), onPressed: (){
+            showProgressDialog(context: context);
+          })
         ],
       ),
       body: new Container(

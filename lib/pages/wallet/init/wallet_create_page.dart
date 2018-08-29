@@ -184,17 +184,15 @@ class _WalletCreateState extends State<WalletCreatePage> {
     ) ?? false;
   }
 
-  void _handleCreateWallet() {
+  _handleCreateWallet() async {
     //todo 校验
     String password = _formData.password;
     String name = _formData.name;
 
-    var walletFuture = WalletInitializer.generateWallet(name:name,password: password);
-    walletFuture.then((value){
-      Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
-        return WalletCreateResultPage(value);
-      }));
+    var wallet = await WalletInitializer.generateWallet(name:name,password: password);
+    Navigator.of(context).push(new MaterialPageRoute(builder: (_) {
+      return WalletCreateResultPage(wallet);
+    }));
 
-    });
   }
 }
