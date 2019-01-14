@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:flutter_test/flutter_test.dart';
 import 'package:l_token/manager/wallet_initialzer.dart';
 import 'package:l_token/sdk/bip39/english.dart';
 import 'package:l_token/sdk/bip39/mnemonic_generator.dart';
-import 'package:test/test.dart';
 
 void main() {
   test('mnemonic test', () {

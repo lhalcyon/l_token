@@ -195,7 +195,6 @@ class _WalletCreateState extends State<WalletCreatePage> {
     }).then((wallet){
       print("after:${new DateTime.now()}\n");
     });
-    http.Client
 //    new Future.delayed(Duration(milliseconds: 4000)).then((_) {
 //      print("after:${new DateTime.now()}\n");
 //    });

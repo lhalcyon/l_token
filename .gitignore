@@ -67,3 +67,5 @@ freeline*.*
 freeline*/
 
 apks
+
+ios/Runner.xcworkspace
