@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:l_token/model/wallet.dart';
-import 'package:l_token/pages/routes/routes.dart';
+import 'package:dio/dio.dart';
 import 'package:l_token/style/styles.dart';
 import 'package:l_token/view/list/list_item_widget.dart';
 
@@ -60,7 +60,9 @@ class SpecificWalletManagePage extends StatelessWidget {
         new ListItemWidget(
           iconData: Icons.import_export,
           title: 'Export Mnemonic Phrase',
-          onTapCallback: () {},
+          onTapCallback: () {
+            _testReq();
+          },
           bottomLineType: BottomLineType.Gap,
         ),
         new ListItemWidget(
@@ -78,6 +80,22 @@ class SpecificWalletManagePage extends StatelessWidget {
       ],
     );
   }
+
+  _testReq() async {
+
+
+      Options options = new Options(
+        baseUrl: "https://www.easy-mock.com/mock/5a2166da67862f4d0c0d5497/hlfund/",
+        connectTimeout: 6000,
+        receiveTimeout: 15000,
+      );
+
+      Dio dio = new Dio(options);
+    
+      Response response = await dio.post('/background/download_config');
+      print(response.data);
+  }
+
 
   _bodyWallet(BuildContext context) {
     return new Ink(
